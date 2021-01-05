@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+	<style>
+		.dispalyBox
+		{
+			border:1px solid blue;
+			height: 35px;
+			width: 20%;
+		}
+	</style>
+</head>
+<body>
+	<div class="calculator">
+		<h1 class="dispalyBox">
+			
+		</h1>
+		<div class="keypad">
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		let dispalyBox=document.querySelector(".dispalyBox");
+		let keypad    =document.querySelector(".keypad");
+		let calcbtn  =["+","-","*","/","="];
+        function shownumber(x) {
+        	// body...
+        	dispalyBox.innerHTML+=x;
+        }
+        function calculate() {
+        	// body...
+        	let showText=dispalyBox.innerHTML;
+        	dispalyBox.innerHTML=eval(showText);
+
+
+        }
+        for (var i = 0; i <= 9; i++) {
+        	keypad.innerHTML+=`<button onclick="shownumber(${i})">${i}</button>`;
+        }
+       
+
+        calcbtn.map((el)=>{
+        	if(el== "="){
+        		keypad.innerHTML+=`<button onclick="calculate('${el}')">${el}</button>`;
+        	}
+        	else
+        	{
+        		keypad.innerHTML+=`<button onclick="shownumber('${el}')">${el}</button>`;
+        	}
+        
+        })
+	</script>
+</body>
+</html>
