@@ -165,7 +165,12 @@
 		function calculate() {
 			// body...
 			let current = displayBox.innerHTML;
-			displayBox.innerHTML=eval(current);
+			try{
+            displayBox.innerHTML = eval(current);
+	        }catch (e) {
+	            alert("Your Input is wrong");
+	        }
+			//displayBox.innerHTML=eval(current);
 		}
 		function allClear() {
 			// body...

@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 30px;
+    font-family: Arial;
+}
+
+body {
+    background-color: black;
+}
+
+.display {
+    color: white;
+    font-size: 60px;
+    text-align: right;
+    padding: 20px;
+}
+
+.calculator {
+    margin: 100px auto;
+    width: 400px;
+}
+
+.keypad_table tr:first-child .key {
+    background-color: grey;
+}
+
+.keypad_table tr:first-child .key:active {
+    background-color: #a5a5a590;
+}
+
+.keypad_table tr td:last-child .key {
+    background-color: #f9922c;
+}
+
+.keypad_table tr td:last-child .key:active {
+    background-color: #a5a5a5cc;
+}
+
+.key {
+    width: 90px;
+    height: 90px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 90px;
+    border-radius: 90px;
+    margin: 5px;
+    background-color: #333333;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+}
+
+.key:active {
+    background-color: #33333390;
+}

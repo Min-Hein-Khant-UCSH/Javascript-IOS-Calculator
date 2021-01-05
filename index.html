@@ -4,49 +4,85 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Calculator</title>
-	<style>
-		.calcKey
-		{
-			background-color: grey;
-			color: white;
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="calculator">
-		<h1 class="dispaly-Box">
-			
-		</h1>
+		<div class="display">
+		0
+		</div>
 		<div class="keypad">
-			
+			<table class="keypad_table">
+				<tr>
+					<td>
+						<div class="key" onclick="allClear()">AC</div>
+					</td>
+					<td>
+						<div class="key" onclick="clearLast()">C</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay('%')">%</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay('/')">&#247;</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="key" onclick="showDisplay(7)">7</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay(8)">8</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay(9)">9</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay('*')">&times;</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="key" onclick="showDisplay(4)">4</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay(5)">5</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay(6)">6</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay('-')">&minus;</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="key" onclick="showDisplay(1)">1</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay(2)">2</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay(3)">3</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay('+')">&plus;</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="key" style="width: 190px" onclick="showDisplay(0)">0</div>
+					</td>
+					<td>
+						<div class="key" onclick="showDisplay('.')">.</div>
+					</td>
+					<td>
+						<div class="key" onclick="calculate()">&equals;</div>
+					</td>
+				</tr>
+			</table>
 		</div>
 	</div>
-	<script type="text/javascript">
-		let dispalyBox=document.querySelector(".dispaly-Box");
-		let keypad=document.querySelector(".keypad");
-		let calcKey=["+","-","*","/","="];
-
-		function showDisplay(x){
-			dispalyBox.innerHTML += x;
-		}
-		function calculate() {
-			let calcText = dispalyBox.innerHTML;
-			dispalyBox.innerHTML=eval(calcText);		
-		}
-
-		for (var i = 0; i <= 9; i++) {
-			keypad.innerHTML +=`<button class="key" onclick='showDisplay(${i})''>${i}</button>`;
-		}
-		calcKey.map((el)=>{
-
-			if(el=="="){
-				keypad.innerHTML +=`<button class="calcKey" onclick="calculate('${el}')">${el}</button>`
-			}
-			else
-			{
-				keypad.innerHTML +=`<button class="calcKey" onclick="showDisplay('${el}')">${el}</button>`
-			}
-		});
-	</script>
+	<script type="text/javascript" src="script.js"></script>
 </body>
 </html>

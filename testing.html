@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculator</title>
+	<style>
+		*
+		{
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+			font-size: 30px;
+			font-family: Arial;
+		}
+		body
+		{
+			background-color: black;
+		}
+		.calculator
+		{
+			margin: 100px auto;
+			width: 400px;
+		}
+		.display
+		{
+			color: white;
+			font-size: 60px;
+			text-align: right;
+			padding: 20px;
+		}
+		.keypad_table tr:first-child .key
+		{
+			background-color: grey;
+		}
+		.keypad_table tr:first-child .key:active
+		{
+			background-color: #a5a5a590;
+		}
+		.keypad_table tr td:last-child .key
+		{
+			background-color: orange;
+		}
+		.keypad_table tr td:last-child .key:active
+		{
+			background-color: #a5a5a5cc;
+		}
+		.key
+		{
+			width: 90px;
+			height: 90px;
+			border: 1px solid black;
+			color: white;
+			border-radius: 90px;
+			margin: 5px;
+			background-color: #333333;
+			text-align: center;
+			line-height: 90px;
+			
+			cursor: pointer;
+			user-select: none;
+		}
+		.key:active
+		{
+			background-color: #33333390;
+		}
+	</style>
+</head>
+<body>
+	<div class="calculator">
+		<div class="display">
+			0
+		</div>
+		<div class="keypad">
+			<table class="keypad_table">
+				<tr>
+					<td>
+						<div class="key" onclick="allClear()">
+							AC
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="oneClear()">
+							C
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('%')">
+							%
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('/')">
+							&#247;
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="key" onclick="keyPress('7')">
+							7
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('8')">
+							8
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('9')">
+							9
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('*')">
+							x
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="key" onclick="keyPress('4')">
+							4
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('5')">
+							5
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('6')">
+							6
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('-')">
+							-
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="key" onclick="keyPress('1')">
+							1
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('2')">
+							2
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('3')">
+							3
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('+')">
+							+
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div class="key" style="width: 180px;" onclick="keyPress(0)">
+							0
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="keyPress('.')">
+							.
+						</div>
+					</td>
+					<td>
+						<div class="key" onclick="calculate()">
+							=
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript">
+		let key = document.querySelector(".key");
+		let display=document.querySelector(".display");
+		let operator=["+","-","*","/","%","."];
+		function keyPress(x) {
+			// body...
+			let current=display.innerHTML;
+			let lastIndex=current[current.length-1];
+
+			if(display.innerHTML==0)
+			{
+				return display.innerHTML=x;
+			}
+			else if(operator.includes(x) && operator.includes(lastIndex))
+			{
+				return display.innerHTML = `${current.substring(0,current.length-1)}${x}`;
+			}
+
+			return display.innerHTML+=x;
+			// display.innerHTML+=x;
+		}
+		function calculate() {
+			// body...
+			let current=display.innerHTML;
+			//display.innerHTML=eval(current);
+			try{
+            display.innerHTML = eval(current);
+        	}
+        	catch (e) {
+            alert("Your Input is wrong");
+        }
+		}
+		function allClear() {
+			// body...
+			display.innerHTML=0;
+		}
+		function oneClear() {
+			// body...
+			let current=display.innerHTML;
+			if(current.length==1)
+			{
+				display.innerHTML=0;
+			}
+			else
+			{
+				display.innerHTML=current.substring(0,current.length-1);	
+			}
+			
+		}
+	</script>
+</body>
+</html>
